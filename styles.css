@@ -1,11 +1,12 @@
 :root {
   --bg: #f7f7f9;
   --bg-alt: #ffffff;
-  --bg-soft: #eef0f4;
-  --primary: #16a34a;
-  --primary-dark: #15803d;
-  --primary-soft: #dcfce7;
-  --text-main: #1f2933;
+  --bg-soft: #f3f1f8;
+  --primary: #7c3aed;       /* morado principal */
+  --primary-dark: #4c1d95;  /* morado profundo */
+  --primary-soft: #ede9fe;  /* morado muy suave */
+  --accent: #a855f7;
+  --text-main: #111827;
   --text-soft: #6b7280;
   --border-subtle: #e5e7eb;
   --danger: #b91c1c;
@@ -33,7 +34,7 @@ body {
   margin: 0;
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   color: var(--text-main);
-  background: radial-gradient(circle at top, #ffffff 0, #f2f4f7 45%, #e5e7eb 100%);
+  background: radial-gradient(circle at top, #ffffff 0, #f5f3ff 40%, #e5e7eb 100%);
   -webkit-font-smoothing: antialiased;
 }
 
@@ -82,14 +83,16 @@ a {
   width: 36px;
   height: 36px;
   border-radius: 12px;
-  background: conic-gradient(from 160deg, #16a34a, #22c55e, #4ade80, #16a34a);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #f9fafb;
-  font-weight: 700;
-  font-size: 0.9rem;
-  box-shadow: 0 10px 25px rgba(22, 163, 74, 0.55);
+  overflow: hidden;
+  background: radial-gradient(circle at 30% 20%, #f5f3ff 0, #c4b5fd 35%, #7c3aed 80%);
+  box-shadow: 0 10px 25px rgba(76, 29, 149, 0.45);
+}
+
+.logo-mark img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
 }
 
 .logo-text {
@@ -214,29 +217,29 @@ a {
 }
 
 .btn-primary {
-  background: linear-gradient(135deg, var(--primary), #22c55e);
+  background: linear-gradient(135deg, var(--primary), var(--accent));
   color: #f9fafb;
-  box-shadow: 0 18px 40px rgba(21, 128, 61, 0.45);
+  box-shadow: 0 18px 40px rgba(76, 29, 149, 0.45);
   transition: transform var(--transition-fast), box-shadow var(--transition-fast), filter var(--transition-fast);
 }
 
 .btn-primary:hover {
   transform: translateY(-1px);
   filter: brightness(1.02);
-  box-shadow: 0 24px 55px rgba(21, 128, 61, 0.5);
+  box-shadow: 0 24px 55px rgba(76, 29, 149, 0.55);
 }
 
 .btn-outline {
   background: #ffffff;
   color: var(--primary-dark);
-  border: 1px solid rgba(22, 163, 74, 0.4);
+  border: 1px solid rgba(124, 58, 237, 0.45);
   transition: background var(--transition-fast), color var(--transition-fast), box-shadow var(--transition-fast), border-color var(--transition-fast);
 }
 
 .btn-outline:hover {
   background: var(--primary-soft);
-  box-shadow: 0 12px 30px rgba(21, 128, 61, 0.2);
-  border-color: rgba(22, 163, 74, 0.8);
+  box-shadow: 0 12px 30px rgba(76, 29, 149, 0.25);
+  border-color: rgba(124, 58, 237, 0.9);
 }
 
 .btn-full {
@@ -324,8 +327,8 @@ a {
   gap: 0.35rem;
   padding: 0.35rem 0.7rem;
   border-radius: var(--radius-full);
-  background: rgba(22, 163, 74, 0.08);
-  border: 1px solid rgba(22, 163, 74, 0.18);
+  background: rgba(124, 58, 237, 0.06);
+  border: 1px solid rgba(124, 58, 237, 0.18);
   font-size: 0.76rem;
   color: var(--text-soft);
 }
@@ -444,7 +447,7 @@ a {
 }
 
 .section-alt {
-  background: radial-gradient(circle at top left, #f9fafb 0, #edf1f7 45%, #e5e7eb 100%);
+  background: radial-gradient(circle at top left, #f9fafb 0, #f5f3ff 45%, #e5e7eb 100%);
 }
 
 .section-header {
@@ -608,11 +611,11 @@ a {
 }
 
 .trust-highlight {
-  background: linear-gradient(145deg, #16a34a, #22c55e);
+  background: linear-gradient(145deg, #7c3aed, #a855f7);
   border-radius: 22px;
   padding: 1.3rem 1.1rem;
   color: #f9fafb;
-  box-shadow: 0 20px 55px rgba(22, 163, 74, 0.6);
+  box-shadow: 0 20px 55px rgba(76, 29, 149, 0.6);
   max-width: 320px;
 }
 
