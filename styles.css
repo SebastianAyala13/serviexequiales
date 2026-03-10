@@ -267,6 +267,8 @@ a {
 /* Hero */
 .hero {
   padding: 2.5rem 0 3.5rem;
+  position: relative;
+  overflow: hidden;
 }
 
 .hero-grid {
@@ -274,6 +276,18 @@ a {
   grid-template-columns: minmax(0, 1.2fr);
   gap: 2rem;
   align-items: center;
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: -20%;
+  background:
+    radial-gradient(circle at 0% 0%, rgba(124, 58, 237, 0.13), transparent 55%),
+    radial-gradient(circle at 100% 20%, rgba(168, 85, 247, 0.12), transparent 55%);
+  opacity: 0.8;
+  z-index: -1;
+  animation: heroGlow 16s ease-in-out infinite alternate;
 }
 
 .hero-content {
@@ -367,6 +381,48 @@ a {
   margin: 0 0 1.1rem;
   font-size: 0.9rem;
   color: var(--text-soft);
+}
+
+/* Galería */
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+  gap: 1.2rem;
+  margin-top: 0.8rem;
+}
+
+.gallery-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+}
+
+.gallery-image-frame {
+  position: relative;
+  border-radius: 18px;
+  overflow: hidden;
+  background: radial-gradient(circle at top left, #f5f3ff 0, #e5e7eb 60%);
+  border: 1px solid rgba(148, 163, 184, 0.35);
+  box-shadow: 0 18px 40px rgba(15, 23, 42, 0.1);
+  transform: translateY(0);
+  transition: transform 0.22s ease-out, box-shadow 0.22s ease-out;
+}
+
+.gallery-image-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.gallery-item figcaption {
+  font-size: 0.86rem;
+  color: #4b5563;
+}
+
+.gallery-image-frame:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 24px 55px rgba(15, 23, 42, 0.18);
 }
 
 /* Form */
@@ -483,6 +539,7 @@ a {
   padding: 1.1rem 1rem;
   border: 1px solid rgba(226, 232, 240, 0.9);
   box-shadow: 0 10px 26px rgba(15, 23, 42, 0.04);
+  transition: transform 0.18s ease-out, box-shadow 0.18s ease-out, border-color 0.18s ease-out;
 }
 
 .card h3 {
@@ -494,6 +551,12 @@ a {
   margin: 0;
   font-size: 0.86rem;
   color: var(--text-soft);
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 18px 40px rgba(15, 23, 42, 0.12);
+  border-color: rgba(124, 58, 237, 0.28);
 }
 
 .benefits-grid {
@@ -560,6 +623,7 @@ a {
   border: 1px solid rgba(226, 232, 240, 0.9);
   padding: 1rem;
   box-shadow: 0 10px 25px rgba(15, 23, 42, 0.05);
+   transition: transform 0.18s ease-out, box-shadow 0.18s ease-out, border-color 0.18s ease-out;
 }
 
 .coverage-card h3 {
@@ -571,6 +635,12 @@ a {
   margin: 0;
   font-size: 0.86rem;
   color: var(--text-soft);
+}
+
+.coverage-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 18px 40px rgba(15, 23, 42, 0.11);
+  border-color: rgba(124, 58, 237, 0.25);
 }
 
 .coverage-note {
@@ -775,6 +845,39 @@ a {
   right: 4px;
 }
 
+/* Animaciones de aparición */
+.reveal {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reveal-delay-1 {
+  transition-delay: 0.08s;
+}
+
+.reveal-delay-2 {
+  transition-delay: 0.16s;
+}
+
+.reveal-delay-3 {
+  transition-delay: 0.24s;
+}
+
+@keyframes heroGlow {
+  from {
+    transform: translate3d(-10px, 0, 0) scale(1);
+  }
+  to {
+    transform: translate3d(10px, 6px, 0) scale(1.03);
+  }
+}
+
 /* Responsive */
 @media (min-width: 640px) {
   .hero {
@@ -795,6 +898,10 @@ a {
   }
 
   .coverage-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .gallery-grid {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 
