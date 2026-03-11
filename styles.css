@@ -311,7 +311,7 @@ a {
     linear-gradient(100deg, rgba(17, 24, 39, 0.78) 0%, rgba(76, 29, 149, 0.36) 42%, rgba(17, 24, 39, 0.12) 100%),
     url("public/fondo-confianza.png") center/cover no-repeat;
   z-index: -2;
-  opacity: 0.22;
+  opacity: 0.34;
 }
 
 .hero-content {
@@ -530,6 +530,74 @@ a {
 
 .section-alt {
   background: radial-gradient(circle at top left, #f9fafb 0, #f5f3ff 45%, #e5e7eb 100%);
+}
+
+.section-photo {
+  position: relative;
+  overflow: hidden;
+}
+
+.section-photo::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  z-index: 0;
+}
+
+.section-photo::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.section-photo > .container {
+  position: relative;
+  z-index: 1;
+}
+
+.benefits-bg::before {
+  background-image: url("public/sala-velacion.png");
+}
+
+.benefits-bg::after {
+  background: linear-gradient(130deg, rgba(248, 250, 252, 0.93), rgba(243, 241, 248, 0.9));
+}
+
+.process-bg::before {
+  background-image: url("public/acompanamiento-familia.png");
+}
+
+.process-bg::after {
+  background: linear-gradient(130deg, rgba(248, 250, 252, 0.92), rgba(233, 213, 255, 0.84));
+}
+
+.coverage-bg::before {
+  background-image: url("public/vehiculo-exequial.png");
+}
+
+.coverage-bg::after {
+  background: linear-gradient(130deg, rgba(248, 250, 252, 0.91), rgba(237, 233, 254, 0.88));
+}
+
+.gallery-bg::before {
+  background-image: url("public/hero-serviexequiales.png");
+}
+
+.gallery-bg::after {
+  background: linear-gradient(120deg, rgba(17, 24, 39, 0.48), rgba(76, 29, 149, 0.42));
+}
+
+.gallery-bg .section-header h2,
+.gallery-bg .section-header p {
+  color: #f8fafc;
+}
+
+.gallery-bg .gallery-item figcaption {
+  color: #e2e8f0;
 }
 
 .trust-bg {
@@ -766,6 +834,14 @@ a {
   color: #e5e7eb;
 }
 
+.cta-bg::before {
+  background-image: url("public/fondo-confianza.png");
+}
+
+.cta-bg::after {
+  background: linear-gradient(120deg, rgba(2, 6, 23, 0.86), rgba(76, 29, 149, 0.66));
+}
+
 .final-cta-inner {
   display: flex;
   flex-direction: column;
@@ -835,6 +911,13 @@ a {
   font-size: 0.78rem;
   color: #6b7280;
   text-align: center;
+}
+
+.hero-card,
+.card,
+.step,
+.coverage-card {
+  backdrop-filter: blur(2px);
 }
 
 /* Floating WhatsApp */
