@@ -95,6 +95,19 @@ a {
   display: block;
 }
 
+.logo-fallback {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 0.75rem;
+}
+
+.logo-fallback::after {
+  content: "SE";
+}
+
 .logo-text {
   display: flex;
   flex-direction: column;
@@ -290,6 +303,17 @@ a {
   animation: heroGlow 16s ease-in-out infinite alternate;
 }
 
+.hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(100deg, rgba(17, 24, 39, 0.78) 0%, rgba(76, 29, 149, 0.36) 42%, rgba(17, 24, 39, 0.12) 100%),
+    url("public/fondo-confianza.jpg") center/cover no-repeat;
+  z-index: -2;
+  opacity: 0.22;
+}
+
 .hero-content {
   max-width: 640px;
 }
@@ -308,6 +332,7 @@ a {
   line-height: 1.15;
   margin: 0 0 0.75rem;
   letter-spacing: -0.02em;
+  text-wrap: balance;
 }
 
 .hero-subtitle {
@@ -405,7 +430,7 @@ a {
   border: 1px solid rgba(148, 163, 184, 0.35);
   box-shadow: 0 18px 40px rgba(15, 23, 42, 0.1);
   transform: translateY(0);
-  transition: transform 0.22s ease-out, box-shadow 0.22s ease-out;
+  transition: transform 0.22s ease-out, box-shadow 0.22s ease-out, filter 0.22s ease-out;
 }
 
 .gallery-image-frame img {
@@ -423,6 +448,7 @@ a {
 .gallery-image-frame:hover {
   transform: translateY(-4px);
   box-shadow: 0 24px 55px rgba(15, 23, 42, 0.18);
+  filter: saturate(1.06);
 }
 
 /* Form */
@@ -504,6 +530,26 @@ a {
 
 .section-alt {
   background: radial-gradient(circle at top left, #f9fafb 0, #f5f3ff 45%, #e5e7eb 100%);
+}
+
+.trust-bg {
+  position: relative;
+  overflow: hidden;
+}
+
+.trust-bg::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(135deg, rgba(17, 24, 39, 0.76), rgba(76, 29, 149, 0.65)),
+    url("public/acompanamiento-familia.jpg") center/cover no-repeat;
+  opacity: 0.38;
+}
+
+.trust-bg > .container {
+  position: relative;
+  z-index: 1;
 }
 
 .section-header {
@@ -661,19 +707,20 @@ a {
 .trust-text h2 {
   margin: 0 0 0.6rem;
   font-size: 1.4rem;
+  color: #f8fafc;
 }
 
 .trust-text p {
   margin: 0 0 0.7rem;
   font-size: 0.9rem;
-  color: var(--text-soft);
+  color: #e5e7eb;
 }
 
 .trust-list {
   margin: 0;
   padding-left: 1.1rem;
   font-size: 0.86rem;
-  color: var(--text-soft);
+  color: #f3f4f6;
 }
 
 .trust-list li + li {
@@ -687,6 +734,7 @@ a {
   color: #f9fafb;
   box-shadow: 0 20px 55px rgba(76, 29, 149, 0.6);
   max-width: 320px;
+  border: 1px solid rgba(233, 213, 255, 0.35);
 }
 
 .trust-badge {
@@ -849,7 +897,7 @@ a {
 .reveal {
   opacity: 0;
   transform: translateY(18px);
-  transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+  transition: opacity 0.65s ease-out, transform 0.65s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .reveal.is-visible {
@@ -885,7 +933,7 @@ a {
   }
 
   .hero-grid {
-    grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+    grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
     gap: 2.25rem;
   }
 

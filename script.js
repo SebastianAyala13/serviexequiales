@@ -149,6 +149,52 @@
         },
       });
     }
+
+    // Entradas al subir y bajar por sección
+    gsap.utils.toArray(".section").forEach((section) => {
+      gsap.fromTo(
+        section,
+        { opacity: 0.92, y: 28 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.8,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: section,
+            start: "top 85%",
+            end: "top 45%",
+            scrub: 0.4,
+          },
+        }
+      );
+    });
   }
+})();
+
+// Efecto 3D suave en tarjetas e imágenes
+(function () {
+  const tiltTargets = document.querySelectorAll(".card, .coverage-card, .gallery-image-frame, .hero-card");
+  if (!tiltTargets.length) return;
+
+  const maxTilt = 5;
+
+  tiltTargets.forEach((el) => {
+    el.style.transformStyle = "preserve-3d";
+    el.style.willChange = "transform";
+
+    el.addEventListener("mousemove", (event) => {
+      const rect = el.getBoundingClientRect();
+      const x = (event.clientX - rect.left) / rect.width;
+      const y = (event.clientY - rect.top) / rect.height;
+      const rotateY = (x - 0.5) * maxTilt * 2;
+      const rotateX = (0.5 - y) * maxTilt * 2;
+      el.style.transform = `perspective(900px) rotateX(${rotateX.toFixed(2)}deg) rotateY(${rotateY.toFixed(2)}deg) translateY(-2px)`;
+    });
+
+    el.addEventListener("mouseleave", () => {
+      el.style.transform = "perspective(900px) rotateX(0deg) rotateY(0deg) translateY(0)";
+    });
+  });
 })();
 
